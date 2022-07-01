@@ -6,7 +6,7 @@ describe("Forecast Summary", () => {
   const validProps = {
     date: 1111111,
     description: "Stub description",
-    icon: "stubIcon",
+    icon: "Stub icon",
     temperature: {
       min: 12,
       max: 22,
@@ -26,6 +26,7 @@ describe("Forecast Summary", () => {
   });
 
   it("renders correct values for props", () => {
+    const formattedDate = new Date(validProps.date).toDateString();
     const { getByText, getByTestId } = render(
       <ForecastSummary
         date={validProps.date}
@@ -34,7 +35,7 @@ describe("Forecast Summary", () => {
         temperature={validProps.temperature}
       />
     );
-    expect(getByText("1111111")).toHaveClass("forecast-summary__date");
+    expect(getByText(formattedDate)).toHaveClass("forecast-summary__date");
     expect(getByText("Stub description")).toHaveClass(
       "forecast-summary__description"
     );
