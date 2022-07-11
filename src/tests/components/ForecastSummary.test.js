@@ -26,6 +26,7 @@ describe("Forecast Summary", () => {
   });
 
   it("renders correct values for props", () => {
+    const formattedDate = new Date(validProps.date).toDateString();
     const { getByText, getByTestId } = render(
       <ForecastSummary
         date={validProps.date}
@@ -34,7 +35,7 @@ describe("Forecast Summary", () => {
         temperature={validProps.temperature}
       />
     );
-    expect(getByText("Thu Jan 01 1970")).toHaveClass("forecast-summary__date");
+    expect(getByText(formattedDate)).toHaveClass("forecast-summary__date");
     expect(getByText("Stub description")).toHaveClass(
       "forecast-summary__description"
     );
